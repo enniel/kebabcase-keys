@@ -1,17 +1,17 @@
 /* globals bench suite set */
 'use strict';
-const camelcaseKeysNpm = require('camelcase-keys');
-const camelcaseKeys = require('..');
+const kebabcaseKeysNpm = require('kebabcase-keys');
+const kebabcaseKeys = require('..');
 const fixture = require('./fixture');
 
-suite('camelcaseKeys', () => {
+suite('kebabcaseKeys', () => {
 	set('mintime', 1000);
 
 	bench('npm', () => {
-		camelcaseKeysNpm(fixture, {deep: true});
+		kebabcaseKeysNpm(fixture, {deep: true});
 	});
 
 	bench('master', () => {
-		camelcaseKeys(fixture, {deep: true});
+		kebabcaseKeys(fixture, {deep: true});
 	});
 });
