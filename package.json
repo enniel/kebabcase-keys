@@ -1,13 +1,12 @@
 {
-	"name": "camelcase-keys",
-	"version": "5.0.0",
-	"description": "Convert object keys to camelCase",
+	"name": "kebabcase-keys",
+	"version": "1.0.0",
+	"description": "Convert object keys to kebab-case",
 	"license": "MIT",
-	"repository": "sindresorhus/camelcase-keys",
+	"repository": "mattii/kebabcase-keys",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"name": "Matthias Lohscheidt",
+		"url": "https://github.com/mattii"
 	},
 	"engines": {
 		"node": ">=6"
@@ -29,9 +28,9 @@
 		"values",
 		"val",
 		"iterate",
-		"camelcase",
-		"camel-case",
-		"camel",
+		"kebabcase",
+		"kebab-case",
+		"kebab",
 		"case",
 		"dash",
 		"hyphen",
@@ -46,7 +45,7 @@
 		"recursive"
 	],
 	"dependencies": {
-		"camelcase": "^5.0.0",
+		"lodash.kebabcase": "^4.1.1",
 		"map-obj": "^3.0.0",
 		"quick-lru": "^1.0.0"
 	},
