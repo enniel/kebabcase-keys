@@ -1,12 +1,12 @@
 'use strict';
 const mapObj = require('map-obj');
-const camelCase = require('camelcase');
+const kebabCase = require('lodash.kebabcase');
 const QuickLru = require('quick-lru');
 
 const has = (array, key) => array.some(x => typeof x === 'string' ? x === key : x.test(key));
 const cache = new QuickLru({maxSize: 100000});
 
-const camelCaseConvert = (input, options) => {
+const kebabCaseConvert = (input, options) => {
 	options = Object.assign({
 		deep: false
 	}, options);
@@ -18,7 +18,7 @@ const camelCaseConvert = (input, options) => {
 			if (cache.has(key)) {
 				key = cache.get(key);
 			} else {
-				const ret = camelCase(key);
+				const ret = kebabCase(key);
 
 				if (key.length < 100) { // Prevent abuse
 					cache.set(key, ret);
@@ -34,9 +34,9 @@ const camelCaseConvert = (input, options) => {
 
 module.exports = (input, options) => {
 	if (Array.isArray(input)) {
-		return Object.keys(input).map(key => camelCaseConvert(input[key], options));
+		return Object.keys(input).map(key => kebabCaseConvert(input[key], options));
 	}
 
-	return camelCaseConvert(input, options);
+	return kebabCaseConvert(input, options);
 };
 
