@@ -68,5 +68,5 @@ This is a fork from [camelcase-keys](https://github.com/sindresorhus/camelcase-k
 
 ## License
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)  
 MIT © [Matthias Lohscheidt](https://github.com/mattii)
