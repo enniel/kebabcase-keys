@@ -1,35 +1,35 @@
 import test from 'ava';
-import camelcaseKeys from '.';
+import kebabcaseKeys from '.';
 
 test('main', t => {
-	t.true(camelcaseKeys({'foo-bar': true}).fooBar);
+	t.true(kebabcaseKeys({fooBar: true})['foo-bar']);
 });
 
 test('exclude option', t => {
-	t.true(camelcaseKeys({'--': true}, {exclude: ['--']})['--']);
-	t.deepEqual(camelcaseKeys({'foo-bar': true}, {exclude: [/^f/]}), {'foo-bar': true});
+	t.true(kebabcaseKeys({'--': true}, {exclude: ['--']})['--']);
+	t.deepEqual(kebabcaseKeys({fooBar: true}, {exclude: [/^f/]}), {fooBar: true});
 });
 
 test('deep option', t => {
 	t.deepEqual(
 		// eslint-disable-next-line camelcase
-		camelcaseKeys({foo_bar: true, obj: {one_two: false, arr: [{three_four: true}]}}, {deep: true}),
-		{fooBar: true, obj: {oneTwo: false, arr: [{threeFour: true}]}}
+		kebabcaseKeys({foo_bar: true, obj: {one_two: false, arr: [{three_four: true}]}}, {deep: true}),
+		{'foo-bar': true, obj: {'one-two': false, arr: [{'three-four': true}]}}
 	);
 });
 
 test('handles nested arrays', t => {
 	t.deepEqual(
 		// eslint-disable-next-line camelcase
-		camelcaseKeys({q_w_e: [['a', 'b']]}, {deep: true}),
-		{qWE: [['a', 'b']]}
+		kebabcaseKeys({q_w_e: [['a', 'b']]}, {deep: true}),
+		{'q-w-e': [['a', 'b']]}
 	);
 });
 
 test('accepts an array of objects', t => {
 	t.deepEqual(
 		// eslint-disable-next-line camelcase
-		camelcaseKeys([{foo_bar: true}, {bar_foo: false}, {'bar-foo': 'false'}]),
-		[{fooBar: true}, {barFoo: false}, {barFoo: 'false'}]
+		kebabcaseKeys([{foo_bar: true}, {bar_foo: false}, {barFoo: 'false'}]),
+		[{'foo-bar': true}, {'bar-foo': false}, {'bar-foo': 'false'}]
 	);
 });
